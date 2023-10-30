@@ -189,3 +189,16 @@ Navigate - you can use arrow keys, h, j, k, and l to move left, down, up, and ri
 Delete Characters - you can delete characters using x (deletes the character under the cursor) and dd (deletes the current line).
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+how to use git hub
+
+go into folder you want using
+    cd and dir
+
+git clone from the url on the repository
+    git clone <url>
+
+then once successfully cloned into folder do 
+    code . (to open VScode with it)
+
+
