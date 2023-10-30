@@ -1,0 +1,191 @@
+    
+    // String Manipulation
+    
+    char name[] = "John Deer";
+    char *ptr = name;
+
+    // traversing through array
+    while (*ptr != '\0') {
+        printf("%c", *ptr);
+        *ptr++; // traverses to next index
+    }
+    printf("\n");
+
+    
+
+    char initial; // acts as a temporary storage 
+    char buffer[100];
+
+    printf("Enter your name and initial: ");
+
+    // fgets is used as an equivalent to getline
+    fgets(input, 20, stdin); // std can be used as a FILE input or stdin for terminal
+
+    // sscanf is used to read in multiple inputs based off a format (directly used with fgets)
+    // it takes a string and assigns the strings to variables
+    sscanf(buffer, "%19s %c", name, &initial);
+
+    // sprintf is used to take variables, put them in a format, and store it in a temporary string
+    sprintf(buffer, "Formatted String: Age=%d, Name=%s", age, name);
+
+    printf("%s, %c", name, initial);
+
+--------------------------------------------------------------------------------------------------------------------
+
+    // Copying strings
+    // char* strcpy(char* destination, const char* source);
+    // char* strncpy(char* destination, const char* source, size_t n);
+
+    // Concatenating strings
+    // char* strcat(char* destination, const char* source);
+    // char* strncat(char* destination, const char* source, size_t n);
+
+    // String length
+    // size_t strlen(const char* str);
+
+    // String comparison
+    // int strcmp(const char* str1, const char* str2);
+    // int strncmp(const char* str1, const char* str2, size_t n);
+
+    // Searching for characters
+    // char* strchr(const char* str, int character);
+    // char* strrchr(const char* str, int character);
+
+    // Searching for substrings
+    // char* strstr(const char* haystack, const char* needle);
+
+    // Copying memory
+    // void* memcpy(void* destination, const void* source, size_t n);
+    // void* memmove(void* destination, const void* source, size_t n);
+
+    // Setting memory
+    // void* memset(void* ptr, int value, size_t n);
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    char name[100] = "John Deer";
+    char name1[100] = "John";
+    char space[100] = " ";
+    char name2[100] = "Deer";
+
+    char *ptr = name;
+    char copy[100] = "";
+
+    // WHEN USING STRN IT IS EXCLUSIVE
+
+    // THE STRING ON THE LEFT STAYS, THE RIGHT IS WHAT ITS USING
+
+    // STRING COPY
+        strcpy(copy, name); // 5 is with the space, 4 is without the space, 3 removes the n
+        // Ex.    strncpy(copy, name, 3) == Joh 
+        printf("Copy: %s\n", copy);
+
+    // STRING CONCATENATION
+        strcat(name1, space);
+        strcat(name1, name2);
+        // strncat(name1, name2, 3)         only limits the one on the right
+        printf("Concatenated: %s\n", name1);
+
+    // STRING COMPARISON
+        char str1[] = "apple";
+        char str2[] = "application";
+
+        int result = strcmp(str1, str2); // strcmp returns int
+        // int result = strncmp(str1, str2, 3), strncmp
+
+        if (result == 0) {
+            printf("The first 3 characters of the strings are equal.\n");
+        } else if (result < 0) {
+            printf("The first 3 characters of str1 come before str2.\n"); // if alphabtically str1 is first it'll be less negative
+        } else {
+            printf("The first 3 characters of str2 come before str1.\n"); // if alphabetically str2 is first it'll be positive
+        }
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    FILE INPUT/OUTPUT
+
+    char *line = (char*)malloc(50 * sizeof(char));
+
+    FILE *file = fopen("input.txt", "r");
+    // FILE* is a pointer to a file
+    // fopen(filename, reading)
+
+    if (file == NULL) {
+        printf("Failed to open\n");
+
+        return 1;
+    }
+
+  FILE *fileo = fopen("output.txt", "w"); // Open a file for writing (create or overwrite)
+
+  if (fileo == NULL) {
+      printf("Failed to open the file\n");
+      return 1;
+  }
+
+
+    while (fgets(line, 100, file) != NULL) { // read file
+
+        char name[100];
+        int age;
+
+        sscanf(line, "%50s %d", name, &age);
+        fprintf(fileo, "Name: %s\nAge: %d\n", name, age); // print out to another file
+    }
+
+    // Close both files and free line
+    fclose(fileo);
+    fclose(file);
+    free(line);
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Vi/Vim - text editor for configuration files
+
+
+Command Mode vs Insert Mode;
+
+Command Mode - (automatically starts in Command Mode)
+    - navigate text
+    - editing tasks
+    - execute commands
+
+Insert Mode - 
+    - insert, edit, type text
+
+-----------------------------------------------------------------------------------------------------------------
+
+// Switching between modes 
+
+To switch from command mode to insert mode:
+
+Press i to enter insert mode before the cursor.
+Press I to enter insert mode at the beginning of the current line.
+Press a to enter insert mode after the cursor.
+Press A to enter insert mode at the end of the current line.
+Press o to open a new line below the current line and enter insert mode.
+Press O to open a new line above the current line and enter insert mode.
+
+------------------------------------------------------------------------------------------------------------------------
+
+// Basic Commands:
+
+Save - to save your changes and write the file
+    use :w and press Enter
+
+Save and Quit - To save and quit
+    use :wq or :x
+
+Quit Without Saving - To quit without saving changes 
+    use :q!
+
+Save As - To save the file with a new name 
+    use :w new_filename.
+
+Navigate - you can use arrow keys, h, j, k, and l to move left, down, up, and right, respectively.
+
+Delete Characters - you can delete characters using x (deletes the character under the cursor) and dd (deletes the current line).
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
